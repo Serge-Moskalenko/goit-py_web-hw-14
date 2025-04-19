@@ -13,10 +13,10 @@ class Settings(BaseSettings):
     MAIL_FROM: str = "postgres"
     MAIL_PORT: int = 567234
     MAIL_SERVER: str = "postgres"
-    REDIS_DOMAIN: str = 'localhost'
+    REDIS_DOMAIN: str = "localhost"
     REDIS_PORT: int = 6379
     REDIS_PASSWORD: str | None = None
-    CLD_NAME: str = 'abc'
+    CLD_NAME: str = "abc"
     CLD_API_KEY: int = 326488457974591
     CLD_API_SECRET: str = "secret"
 
@@ -27,8 +27,9 @@ class Settings(BaseSettings):
             raise ValueError("algorithm must be HS256 or HS512")
         return v
 
-
-    model_config = ConfigDict(extra='ignore', env_file=".env", env_file_encoding="utf-8")  # noqa
+    model_config = ConfigDict(
+        extra="ignore", env_file=".env", env_file_encoding="utf-8", from_attributes=True
+    )  # noqa
 
 
 config = Settings()
